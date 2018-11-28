@@ -1,6 +1,11 @@
 from auth import db
 
 from .base import BaseModel
+import enum
+
+class TypeEnum(enum.Enum):
+    user = 1
+    application = 2
 
 
 class User(BaseModel):
@@ -10,6 +15,7 @@ class User(BaseModel):
     password = db.Column(db.String(32), index=True, nullable=False)
     token = db.Column(db.String(32), index=True, nullable=False)
     ip = db.Column(db.String(15), nullable=False)
+    type = db.Column(db.Enum(TypeEnum), nullable=False)
 
     def to_dict(self):
         return {
@@ -17,6 +23,7 @@ class User(BaseModel):
             'password': self.password,
             'token': self.token,
             'ip': self.ip,
+            'type': self.type
         }
 
     def __str__(self):
