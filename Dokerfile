@@ -1,0 +1,20 @@
+FROM python:3.6.2-alpine
+MAINTAINER Raphael Ramos <raphael.ramos@gmail.com.com>
+LABEL version="1.0.0"
+
+RUN apk add --no-cache --update bash build-base
+RUN mkdir src
+WORKDIR src
+
+ADD auth ./auth
+ADD tests ./tests
+ADD superb_01.py .
+ADD superb_02.py .
+ADD superb_03.py .
+ADD Makefile .
+ADD requirements.txt .
+
+#sudo apt-get install libmysqlclient-dev
+
+RUN pip install -U pip setuptools
+RUN pip install -r requirements.txt
