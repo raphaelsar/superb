@@ -1,6 +1,6 @@
 FROM python:3.6.2-alpine
 
-MAINTAINER Jotagê Sales <jotage_sales@hotmail.com>
+MAINTAINER Raphael Ramos <saponeis@gmail.com>
 
 LABEL version="1.0.0"
 
