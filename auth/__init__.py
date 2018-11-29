@@ -13,10 +13,10 @@ migrate = Migrate()
 
 
 def generic_api_error(e):
-    resp = json.dumps({"error": {"status": "",
-                                 "title": "",
-                                 "code": getattr(e, 'api_code', 'UNDEFINED'),
-                                 "message": ""
+    print(dir(e))
+    resp = json.dumps({"error": {"status": False,
+                                 "code": getattr(e, 'code', '500'),
+                                 "message": getattr(e, 'description', 'UNDEFINED')
                                  }})
 
     response = Response(resp, status=e.code, mimetype='application/json')
